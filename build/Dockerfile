@@ -21,6 +21,9 @@ RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.
 # Install Chromium via Flatpak
 RUN flatpak install flathub org.chromium.Chromium -y
 
+#Debugging
+RUN cat /var/lib/flatpak/exports/share/applications/org.chromium.Chromium.desktop
+
 # Disable pop up on first opening of chromium
 #RUN sed -i 's,Exec=/usr/bin/chromium-browser,Exec=/usr/bin/chromium-browser --no-first-run --no-default-browser-check,g' /var/lib/flatpak/exports/share/applications/org.chromium.Chromium.desktop
 
