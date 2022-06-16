@@ -13,13 +13,13 @@ RUN apt-get -qq update && apt-get -qq install -y curl jq software-properties-com
 # Install packages that we need
 ARG NETBOOT_IP
 RUN bash -c 'kernelVersion=$(curl -s http://$NETBOOT_IP/kernels/latest-kernel-version.json | jq -r .version); if [[ "$kernelVersion" == "" ]]; then kernelVersion="5.15.0-25-generic"; fi && \
-apt-get -qq update && apt-get -qq install -y sudo vim syslog-ng zram-config earlyoom iputils-ping dnsutils traceroute ca-certificates flatpak conky openssh-server libxss1 > /dev/null 2>&1'
+apt-get -qq update && apt-get -qq install -y sudo vim syslog-ng zram-config earlyoom iputils-ping dnsutils traceroute ca-certificates conky openssh-server libxss1 > /dev/null 2>&1'
 
 # Activate Flatpak-Repo
-RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+#RUN flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # Install Chromium via Flatpak
-RUN flatpak install flathub org.chromium.Chromium -y
+#RUN flatpak install flathub org.chromium.Chromium -y
 
 # Disable pop up on first opening of chromium
 #RUN sed -i 's,Exec=/usr/bin/chromium-browser,Exec=/usr/bin/chromium-browser --no-first-run --no-default-browser-check,g' /var/lib/flatpak/exports/share/applications/org.chromium.Chromium.desktop
