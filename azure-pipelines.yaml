@@ -4,7 +4,7 @@ trigger:
       - "main"
 
 pool:
-  name: "planet-express-docker-agents"
+  name: "pe-testpool"
 
 variables:
 - name: usecache
