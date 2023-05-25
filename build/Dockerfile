@@ -58,10 +58,13 @@ COPY ./hostname/hostname-changer.service /etc/systemd/system/hostname-changer.se
 RUN mkdir -p /etc/systemd/system/network.target.wants/
 RUN ln -s /etc/systemd/system/hostname-changer.service /etc/systemd/system/network.target.wants/hostname-changer.service
 
+# Set gdm as display manager and install Gnome / Wayland as desktop environment
+RUN /bin/bash -c "debconf-set-selections <<< 'gdm3 shared/default-x-display-manager select gdm3'" && apt-get -qq update && apt-get -qq install -y ubuntu-desktop-minimal gdm3 > /dev/null 2>&1
+
 # Set sddm as display manager and install Plasma / Wayland as desktop environment
-RUN /bin/bash -c "debconf-set-selections <<< 'sddm shared/default-x-display-manager select sddm'" && apt-get -qq update && apt-get -qq install -y kde-plasma-desktop plasma-workspace-wayland plasma-nm dolphin print-manager libglib2.0-dev locales kde-spectacle kcalc > /dev/null 2>&1
+# RUN /bin/bash -c "debconf-set-selections <<< 'sddm shared/default-x-display-manager select sddm'" && apt-get -qq update && apt-get -qq install -y kde-plasma-desktop plasma-workspace-wayland plasma-nm dolphin print-manager libglib2.0-dev locales kde-spectacle kcalc > /dev/null 2>&1
 # Disable x11 in sddm, use wayland instead
-RUN rm -f /usr/share/xsessions/plasma.desktop
+# RUN rm -f /usr/share/xsessions/plasma.desktop
 
 # Install superimportant emojis
 RUN apt-get update -qq > /dev/null 2>&1 && apt-get install -y -qq fonts-noto-color-emoji > /dev/null 2>&1
