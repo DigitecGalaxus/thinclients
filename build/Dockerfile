@@ -71,7 +71,7 @@ RUN apt-get -qq update && apt-get install -y ubuntu-desktop-minimal gdm3
 RUN apt-get update -qq > /dev/null 2>&1 && apt-get install -y -qq fonts-noto-color-emoji > /dev/null 2>&1
 
 # Uninstall packages we don't need
-RUN apt-get -qq --purge remove -y kdeconnect partitionmanager xiterm+thai kaddressbook khelpcenter kmail kopete kwalletmanager korganizer okular sweeper dragonplayer juk pim-sieve-editor kwalletmanager gwenview imagemagick akregator konqueror plasma-discover gnome-shell gdm3 gnupg2 apt-utils cracklib-runtime > /dev/null 2>&1
+RUN apt-get -qq --purge remove -y kdeconnect partitionmanager xiterm+thai kaddressbook khelpcenter kmail kopete kwalletmanager korganizer okular sweeper dragonplayer juk pim-sieve-editor kwalletmanager gwenview imagemagick akregator konqueror plasma-discover gnupg2 apt-utils cracklib-runtime > /dev/null 2>&1
 
 # Prevent wallet / Key manager popups
 RUN rm -f /usr/share/dbus-1/services/org.kde.kwalletd5.service
