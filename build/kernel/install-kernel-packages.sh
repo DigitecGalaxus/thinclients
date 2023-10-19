@@ -9,7 +9,7 @@ else
         netbootIP="$1"
 fi
 
-kernelVersion="linux-image-uc-6.5.0-9-generic" # $(curl -s --connect-timeout 2 "http://$netbootIP/kernels/latest-kernel-version.json" | jq -r .version)
+kernelVersion="linux-image-6.5.0-9-generic" # $(curl -s --connect-timeout 2 "http://$netbootIP/kernels/latest-kernel-version.json" | jq -r .version)
 
 # if [[ "$kernelVersion" == "" ]]
 # then
