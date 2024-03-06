@@ -24,7 +24,6 @@ RUN bash -c 'apt-get download linux-firmware && \
     rm -rfv /tmp/linux-firmware > /dev/null 2>&1 && rm -fv *.deb' > /dev/null 2>&1
 
 #further debugging
-RUN dpkg --get-selections | grep hold
 RUN apt-get autoremove -y > /dev/null 2>&1 && apt-get clean -y > /dev/null 2>&1
 
 RUN apt-get -qq update && apt-get -qq install -y software-properties-common gnupg2 apt-utils wget ntp sudo vim syslog-ng earlyoom iputils-ping dnsutils traceroute ca-certificates conky openssh-server libxss1 zram-config
