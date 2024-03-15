@@ -53,7 +53,7 @@ fi
 if [[ "$useDockerBuildCache" == "true" || "$useDockerBuildCache" == "True" ]]; then
     dockerBuildCacheArgument=""
 else
-    dockerBuildCacheArgument="--no-cache --pull"
+    dockerBuildCacheArgument="--no-cache"
 fi
 if [[ "$folderToPromoteTo" == "" ]]; then
     folderToPromoteTo="dev"
